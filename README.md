@@ -15,9 +15,9 @@ php artisan bundle:install sendgrid
 Add the following to your **application/bundles.php** file:
 
 ```php
-    'sendgrid' => array(
-        'auto' => true
-    ),
+'sendgrid' => array(
+    'auto' => true
+),
 ```
 
 You will also need to add your username and password in ```config/options.php```
@@ -43,4 +43,15 @@ $mail->addTo('foo@bar.com')->
        setSubject('Subject goes here')->
        setText('Hello World!')->
        setHtml('<strong>Hello World!</strong>');
+```
+
+Send it using the API of your choice (SMTP or Web)
+
+```php
+$sendgrid->smtp->send($mail);
+```
+Or
+
+```php
+$sendgrid->web->send($mail);
 ```
